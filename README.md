@@ -22,6 +22,7 @@ Le fichier `index.php` est un exemple d'utilisation.
 
 ## Fonctionnement
 Le site de Colissimo utilise des images pour indiquer les différentes étapes du suivi du colis. Voici comment fonctionne le script :
+
 1. Il télécharge toutes les images de suivi (et les enregistre dans le dossier `colis/IDDUCOLIS/`) ;
 2. Il prend chaque image ;
 3. Il découpe celle-ci en lettres (il distingue les lettres en cherchant les espaces) (et les enregistre dans le dossier `colis/IDDUCOLIS/letters/`) ;
