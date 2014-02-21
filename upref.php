@@ -11,8 +11,11 @@
 <?php
 
 foreach ($_POST as $k => $p) {
-    unlink('letters/ref/' . $k . '.png');
-    file_put_contents('letters/ref/' . $k, $p);
+    $k = preg_replace('#[^0-9a-z]#', '', $k);
+    if (!file_exists('letters/ref/' . $k)) {
+        unlink('letters/ref/' . $k . '.png');
+        file_put_contents('letters/ref/' . $k, $p);
+    }
 }
 
 $listRef = scandir('letters/ref');
