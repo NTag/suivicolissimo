@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Rtourne les informations de suivi
+ * Retourne les informations de suivi
  * d'un colis Colissimo
  * @class suiviColissimo
  */
@@ -105,7 +105,10 @@ class suiviColissimo
                 if ($d == 1) {
                     $text = str_replace(' ', '', $text);
                 }
-                $infosDetails[$nameInfos[$d]] = $text;
+		// Petit bug avec les .
+		$text = preg_replace('#\.([A-Z])#', '. $1', $text);
+                $text = str_replace('Ilest', 'Il est', $text);
+		$infosDetails[$nameInfos[$d]] = $text;
             }
             $finalText[] = $infosDetails;
         }
