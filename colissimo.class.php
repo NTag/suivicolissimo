@@ -207,8 +207,8 @@ class suiviColissimo
         }
         
         // Le i majuscule et le L minuscule sont identiques dans la police de la Poste...
-        $outText = preg_replace('#^ll #', 'Il', $outText);
-        $outText = preg_replace('# ll #', 'Il', $outText);
+        $outText = preg_replace('#^ll #', 'Il ', $outText);
+        $outText = preg_replace('# ll #', ' Il ', $outText);
         $outText = trim($outText);
         return $outText;
     }
