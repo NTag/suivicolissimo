@@ -39,8 +39,6 @@ class suiviColissimo
         $getIndex = curl_init();
         curl_setopt($getIndex, CURLOPT_URL, "http://www.colissimo.fr/portail_colissimo/suivre.do?colispart=" . $this->id);
         curl_setopt($getIndex, CURLOPT_HEADER, true);
-        curl_setopt($getIndex, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($getIndex, CURLOPT_PROXY, '129.104.247.2:8080');
         curl_setopt($getIndex, CURLOPT_RETURNTRANSFER, true);
         $pageIndex = curl_exec($getIndex);
         curl_close($getIndex);
