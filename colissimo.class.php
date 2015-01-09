@@ -90,7 +90,7 @@ class suiviColissimo
             $infosDetails = array();
             foreach ($details as $detail) {
                 $d++;
-                if (preg_match('<img src', $detail)) {
+                if (preg_match('#<img src#isU', $detail)) {
                     $img = preg_replace("#^.+<img src='(.+)'.+$#isU", '$1', $detail);
                     $getImg = curl_init();
                     curl_setopt($getImg, CURLOPT_URL, "http://www.colissimo.fr/portail_colissimo/" . $img);
