@@ -70,6 +70,7 @@ class suiviColissimo
         // Extraction du cookie
         $cookie = preg_replace('#^.+Set-Cookie: (.+) Path=.+$#isU', '$1', $pageIndex);
 
+	$pageIndex = preg_replace('#<div id="horaires2".+<div class="bottom">#isU', '', $pageIndex);
         $table = preg_replace('#^.+<table class="dataArray" summary="Suivi de votre colis" width="100%">(.+)</table>.+$#isU', '$1', $pageIndex);
         $table = preg_replace('#^.+<tbody>(.+)</tbody>.+$#isU', '$1', $table);
 
@@ -90,8 +91,8 @@ class suiviColissimo
             $infosDetails = array();
             foreach ($details as $detail) {
                 $d++;
-                if (preg_match('#<img src#isU', $detail)) {
-                    $img = preg_replace("#^.+<img src='(.+)'.+$#isU", '$1', $detail);
+                if (preg_match('#<img (style="cursor:pointer" )?src#isU', $detail)) {
+                    $img = preg_replace("#^.+<img (style=\"cursor:pointer\" )?src='(.+)'.+$#isU", '$2', $detail);
                     $getImg = curl_init();
                     curl_setopt($getImg, CURLOPT_URL, "http://www.colissimo.fr/portail_colissimo/" . $img);
                     curl_setopt($getImg, CURLOPT_COOKIE, $cookie);
